@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#define INF 2100000000
+#define INF 2100000000//이 값은 최대노드의수*최대 가중치의 값 보다 커야함
 #define MAX 1001
 using namespace std;
 int visit[MAX];
