@@ -4,7 +4,7 @@ enum Direction{EAST=1,WEST=2,NORTH=3,SOUTH=4};
 int arr[21][21]={0};//0은 안씀
 int command[1001]={0};//0안씀
 int dice[7]={0};
-int fourdirection[6]={6,3,4,2,5,1};
+int paperCraft[6]={6,3,4,2,5,1};
 bool moveDeter(int direction,int dice_i,int dice_j,int rows,int cols){
   if(direction==EAST){
       if(dice_j==cols)
@@ -25,42 +25,42 @@ bool moveDeter(int direction,int dice_i,int dice_j,int rows,int cols){
   return true;
 }
 int dice_index_calculate(int direction,int cur_diceIndx){//전개도 업데이트+해당 방향에 대한 값 리턴
-int temp[6]={fourdirection[0],fourdirection[1],fourdirection[2],fourdirection[3],fourdirection[4],fourdirection[5]};
+int temp[6]={ paperCraft[0], paperCraft[1], paperCraft[2], paperCraft[3], paperCraft[4], paperCraft[5]};
   switch (direction) {
     case EAST:
-    fourdirection[0]=temp[1];
-    fourdirection[1]=temp[5];
-    fourdirection[2]=temp[0];
-    fourdirection[3]=temp[3];
-    fourdirection[4]=temp[4];
-    fourdirection[5]=temp[2];
+    paperCraft[0]=temp[1];
+    paperCraft[1]=temp[5];
+    paperCraft[2]=temp[0];
+    paperCraft[3]=temp[3];
+    paperCraft[4]=temp[4];
+    paperCraft[5]=temp[2];
     break;
     case WEST:
-    fourdirection[0]=temp[2];
-    fourdirection[1]=temp[0];
-    fourdirection[2]=temp[5];
-    fourdirection[3]=temp[3];
-    fourdirection[4]=temp[4];
-    fourdirection[5]=temp[1];
+    paperCraft[0]=temp[2];
+    paperCraft[1]=temp[0];
+    paperCraft[2]=temp[5];
+    paperCraft[3]=temp[3];
+    paperCraft[4]=temp[4];
+    paperCraft[5]=temp[1];
     break;
     case NORTH:
-    fourdirection[0]=temp[3];
-    fourdirection[1]=temp[1];
-    fourdirection[2]=temp[2];
-    fourdirection[3]=temp[5];
-    fourdirection[4]=temp[0];
-    fourdirection[5]=temp[4];
+    paperCraft[0]=temp[3];
+    paperCraft[1]=temp[1];
+    paperCraft[2]=temp[2];
+    paperCraft[3]=temp[5];
+    paperCraft[4]=temp[0];
+    paperCraft[5]=temp[4];
     break;
     case SOUTH:
-    fourdirection[0]=temp[4];
-    fourdirection[1]=temp[1];
-    fourdirection[2]=temp[2];
-    fourdirection[3]=temp[0];
-    fourdirection[4]=temp[5];
-    fourdirection[5]=temp[3];
+    paperCraft[0]=temp[4];
+    paperCraft[1]=temp[1];
+    paperCraft[2]=temp[2];
+    paperCraft[3]=temp[0];
+    paperCraft[4]=temp[5];
+    paperCraft[5]=temp[3];
     break;
   }
-  return   fourdirection[0];
+  return    paperCraft[0];
 }
 void diceRoller(int direction,int& cur_diceIndx,int& dice_i,int& dice_j,int rows,int cols){
   if(moveDeter(direction, dice_i, dice_j,rows,cols)){
