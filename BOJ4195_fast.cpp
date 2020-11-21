@@ -28,12 +28,10 @@ void unionXY(int x,int y){
     if(x<y){
       parent[y]=x;
       level[x]+=level[y];
-      // cout<<level[x]<<"\n";
     }
     else if(x>y){
       parent[x]=y;
       level[y]+=level[x];
-      // cout<<level[y]<<"\n";
     }
   }
 }
