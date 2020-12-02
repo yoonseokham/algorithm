@@ -3,8 +3,9 @@
 #include <iostream>
 #include <queue>
 using namespace std;
-
-void PushAbleIndex(int index,int jndex,int visit[][100],int n,int m,vector<vector<int> > &maps,queue<pair<int,int> > &q){
+typedef pair<int,int> Point;
+void FromCurrentPointVisitReachableIndex(Point current,int visit[][100],vector<vector<int> > &maps,queue<pair<int,int> > &q){
+    int index=current.first,jndex=current.second,n=maps.size(),m=maps[0].size();
     int new_index,new_jndex;
     for(int i=0;i<4;i++){
         new_index="0121"[i]-'1'+index;
@@ -15,26 +16,19 @@ void PushAbleIndex(int index,int jndex,int visit[][100],int n,int m,vector<vecto
         }
     }
 }
-int BFS(int visit[][100],int n ,int m,vector<vector<int> > &maps){
-    queue <pair<int,int>> q;
+int BFS(int n ,int m,vector<vector<int> > &maps){
+    queue <Point> q;
+    int visit[100][100]={0};
     q.push({0,0});
     visit[0][0]=1;
-    int cnt=0;
     while(!q.empty()){
-        pair<int,int> info=q.front();
+        Point info=q.front();
         q.pop();
-        PushAbleIndex(info.first,info.second,visit,n,m,maps,q);
+        FromCurrentPointVisitReachableIndex(info,visit,maps,q);
     }
-    cout<<visit[n-1][m-1];
-    return visit[n-1][m-1];
+    return visit[n-1][m-1]==0?-1:visit[n-1][m-1];
 }
 int solution(vector<vector<int> > maps)
 {
-    int n=maps.size();
-    int m=maps[0].size();
-    int visit[100][100]={0};
-    int answer = BFS(visit,n,m,maps);
-    if(answer==0)
-        return -1;
-    return answer;
+    return BFS(maps.size(),maps[0].size(),maps);
 }
