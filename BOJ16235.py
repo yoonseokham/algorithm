@@ -18,8 +18,6 @@ for i in range(m):
     y=int(line[1])-1
     age=int(line[2])
     tree_age[x][y].append(age)
-    # tree_age.sort(reverse=True)
-    # heapq.heappush(tree_age[x][y],age)
 cnt=0
 for i in range(n):
     for j in range(n):
@@ -31,12 +29,10 @@ for years in range(k):
             if len(tree_age[i][j])!=0:
                 temp=[]
                 while tree_age[i][j]:
-                    # top=heapq.heappop(tree_age[i][j])
                     top=tree_age[i][j].pop()
                     if top<=food[i][j]:
                         food[i][j]-=top
                         temp.append(top+1)
-                        # heapq.heappush(temp,top+1)
                     else:
                         dead[i][j]+=int(top/2)
                 temp.reverse()
@@ -51,7 +47,6 @@ for years in range(k):
                         NewJ=j+int("12221000"[u])-1
                         if NewI>=0 and NewI<n and NewJ>=0 and NewJ<n:
                             tree_age[NewI][NewJ].append(1)
-                            # heapq.heappush(tree_age[NewI][NewJ],1)
     if years==k-1:
         for i in range(n):
             for j in range(n):
