@@ -1,0 +1,78 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <stack>
+#define trash 1
+using namespace std;
+int intboard[31][31]={0};
+bool boolboard[31][31]={0};
+int di[4]={0,0,1,1};
+int dj[4]={0,1,0,1};
+stack <int> s;
+void inited(int m,int n,vector<string> board){//init board해줌
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            intboard[i][j]=board[i][j];
+            boolboard[i][j]=0;
+        }
+    }
+    return;
+}
+void initBool(int m,int n){
+     for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            boolboard[i][j]=0;
+        }
+    }
+    return;
+}
+int calculate(int m,int n,vector<string> board){//없어질 블럭 세기
+int answer=0;
+    for(int i=0;i<m-1;i++){
+        for(int j=0;j<n-1;j++){
+            if(intboard[i][j]!=trash&&intboard[i][j]==intboard[i][j+1]&&intboard[i+1][j]==intboard[i+1][j+1]&&intboard[i][j]==intboard[i+1][j+1]){
+                for(int k=0;k<4;k++){
+                    if(boolboard[i+di[k]][j+dj[k]]==0){
+                        answer++;
+                        boolboard[i+di[k]][j+dj[k]]=1;
+                    }
+                }
+            }
+        }
+    }
+    return answer;
+}
+void newIntBoard(int m, int n){
+    for(int i=0;i<n;i++){
+        int dummy=0;
+        for(int j=m-1;j>=0;j--){
+            if(!boolboard[j][i]){
+                s.push(intboard[j][i]);
+            }
+            else{
+                dummy++;
+            }
+        }
+         for(int k=0;k<dummy;k++){
+                 s.push(trash);
+            }
+         for(int j=0;j<m;j++){
+             int temp=s.top();
+             intboard[j][i]=temp;
+             s.pop();
+         }
+    }
+}
+int solution(int m, int n, vector<string> board) {
+    int answer = 0;
+    int temp=0;
+    inited(m,n,board);
+    do{
+        temp=answer;
+        answer+=calculate(m,n,board);
+        newIntBoard(m,n);
+        initBool(m,n);
+    }
+    while(temp!=answer);
+    return answer;
+}
