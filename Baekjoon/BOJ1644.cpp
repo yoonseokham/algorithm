@@ -14,7 +14,7 @@ vector<int> eratos(int n){
     if(prime[i]) primeOnly.push_back(i);
   return primeOnly;
 }
-int caterpiller(vector<int>& prime,int target){
+int caterpillar(vector<int>& prime,int target){
   int answer=0;
   int start=0;
   int end=0;
