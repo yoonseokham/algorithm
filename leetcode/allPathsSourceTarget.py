@@ -1,23 +1,19 @@
-answer=[]
-path=[0]
+
 class Solution:
-    def BackTracking(self,graph: List[List[int]],visit,curIndex=0):
-        global path
-        global answer
-        if curIndex==len(graph)-1:
-            answer.append(path[:])
-        for i in graph[curIndex]:
-            visit[i]=True
-            path.append(i)
-            self.BackTracking(graph,visit,i)
-            del path[-1]
-            visit[i]=False
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        global answer
-        global path
         answer=[]
         path=[0]
+        def BackTracking(graph: List[List[int]],visit,curIndex=0):
+            if curIndex==len(graph)-1:
+                answer.append(path[:])
+            for i in graph[curIndex]:
+                if visit[i]==True: continue
+                visit[i]=True
+                path.append(i)
+                BackTracking(graph,visit,i)
+                del path[-1]
+                visit[i]=False
         visit=[False for i in range(len(graph))]
         visit[0]=True
-        self.BackTracking(graph,visit)
+        BackTracking(graph,visit)
         return answer
