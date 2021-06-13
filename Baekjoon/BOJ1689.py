@@ -1,4 +1,5 @@
 import sys
+#sweeping
 if __name__ == "__main__":
     n=int(input())
     cordinate=[]
