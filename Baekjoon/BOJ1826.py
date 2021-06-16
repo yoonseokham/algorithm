@@ -1,7 +1,9 @@
 from collections import deque
 import sys,heapq
-def dataPush(data:tuple):
+def dataPush(data:tuple)->tuple:
     return tuple((-data[1],data[0]))
+def dataPop(data:tuple)->tuple:
+    return tuple((-data[0],data[1]))
 if __name__ == "__main__":
     n=int(input())
     gas_info=deque(sorted([tuple(map(int,sys.stdin.readline().split())) for _ in range(n)]))
@@ -18,9 +20,7 @@ if __name__ == "__main__":
                 gas_info.popleft()
             else:break
         if gas_station:
-            temp=heapq.heappop(gas_station)
-            cost=-1*temp[0]
-            visit=temp[1]
+            cost,visit=dataPop(heapq.heappop(gas_station))
             visitCount+=1
             remain_gas=remain_gas-(visit-curLocation)+cost
             curLocation=visit
