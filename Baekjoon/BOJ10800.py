@@ -36,7 +36,4 @@ if __name__ == "__main__":
             accumulateSum[i][j]=accumulateSum[i][j-1]+colorGather[i][j]
     for i,(color,scale) in ballInfo.items():
         localSum=findSum(accBall,ball,scale)-findSum(accumulateSum[color],colorGather[color],scale)
-        # for j in colorGather.keys():
-        #     if color!=j:
-        #         localSum+=findSum(accumulateSum[j],colorGather[j],scale)
         print(localSum)
