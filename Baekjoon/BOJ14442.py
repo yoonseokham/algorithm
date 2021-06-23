@@ -13,13 +13,12 @@ def BFS(maze:list,k:int)->int:
         for i,j in indexInfo:
             newI=curI+i;newJ=curJ+j
             if 0<=newI<len(maze) and 0<=newJ<len(maze[0]) and 0<=curSmashed<=k:
-                if not dp[curSmashed][newI][newJ] :
-                    if maze[newI][newJ]==0:
-                        dp[curSmashed][newI][newJ]=dp[curSmashed][curI][curJ]+1
-                        q.append((newI,newJ,curSmashed))
-                    elif maze[newI][newJ]==1 and curSmashed<k:
-                        dp[curSmashed+1][newI][newJ]=dp[curSmashed][curI][curJ]+1
-                        q.append((newI,newJ,curSmashed+1))
+                if  dp[curSmashed][newI][newJ]==0 and maze[newI][newJ]==0:# 아직 방문안한 빈방
+                    dp[curSmashed][newI][newJ]=dp[curSmashed][curI][curJ]+1
+                    q.append((newI,newJ,curSmashed))
+                if  maze[newI][newJ]==1 and curSmashed<k and dp[curSmashed+1][newI][newJ]==0:# 아직 안부신 벽임
+                    dp[curSmashed+1][newI][newJ]=dp[curSmashed][curI][curJ]+1
+                    q.append((newI,newJ,curSmashed+1))
 
     return -1
 if __name__ == "__main__":
