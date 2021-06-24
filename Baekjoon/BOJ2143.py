@@ -1,6 +1,5 @@
 import sys
 from collections import Counter
-from collections import defaultdict
 from itertools import combinations
 
 def SumArrayMaker(array:list)->list:
