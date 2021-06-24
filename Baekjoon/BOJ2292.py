@@ -6,3 +6,4 @@ while True:
     else:
         print(n)
         break
+#계차수열
