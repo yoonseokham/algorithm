@@ -16,5 +16,4 @@ def BFS(start,end):
     return dp[end]
 if __name__ == "__main__":
     result=BFS(*map(int,input().split()))
-    print(result[0]-1)
-    print(result[1])
+    print(f"{result[0]-1}\n{result[1]}")
