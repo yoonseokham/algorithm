@@ -15,7 +15,6 @@ def BFS(start,end):
                 q.append(newLocation)
     return dp[end]
 if __name__ == "__main__":
-    subin,sister=map(int,input().split())
-    result=BFS(subin,sister)
+    result=BFS(*map(int,input().split()))
     print(result[0]-1)
     print(result[1])
