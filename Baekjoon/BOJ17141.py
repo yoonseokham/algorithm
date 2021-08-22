@@ -37,3 +37,12 @@ if __name__ == "__main__" :
     for virous_list in combinations(virous,m):
         answer=min(BFS(virous_list),answer)
     print( -1 if answer==MAX else answer-1) 
+
+# 조던 akjo   19.4
+# 범덩        33
+# 이지        41
+# 이센셜 컨버스 17
+# 런스타      10.5
+# 다임반스     12.5
+# 펑챈        24
+
