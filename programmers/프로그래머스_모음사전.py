@@ -7,6 +7,6 @@ def solution(word):
             if i!=' ':
                 sum+=i
         if sum=='':
-            return 'x'
+            return 'A'
         return sum
     return {value:i for i,value in enumerate(sorted(list(set([ striper(i) for i in product(*letters) ]))))}[word]+1
