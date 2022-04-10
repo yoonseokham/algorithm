@@ -28,15 +28,19 @@ class Solution:
                         QueenLocation.add(curPoint)
                         dfs(curI+1)
                         QueenLocation.remove(curPoint)
- 
+        
+        def get_formated_answer(n_queen_answers):
+            answer_form = [["." for _ in range(n)] for _ in range(n)]
+            formated_answer = []
+            for n_queen_answer in n_queen_answers:
+                temp_answer = copy.deepcopy(answer_form)
+                temp_formed_answer = []
+                for i,j in n_queen_answer:
+                    temp_answer[i][j]='Q'
+                for row in temp_answer:
+                    temp_formed_answer.append("".join(row))
+                formated_answer.append(temp_formed_answer)
+            return formated_answer
+        
         dfs()
-        return_value = []
-        for n_queen_answer in n_queen_answers:
-            temp_answer = copy.deepcopy(answer_form)
-            temp_formed_answer = []
-            for i,j in n_queen_answer:
-                temp_answer[i][j]='Q'
-            for row in temp_answer:
-                temp_formed_answer.append("".join(row))
-            return_value.append(temp_formed_answer)
-        return return_value
+        return get_formated_answer(n_queen_answers)
