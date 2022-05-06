@@ -19,3 +19,4 @@ class Solution:
                 for i in (-1, 0, 1):
                     isPlantAble.discard(index - i)
         return self.inadjacentChoice(isPlantAble, n)
+    
