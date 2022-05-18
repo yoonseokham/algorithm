@@ -48,7 +48,7 @@ if __name__ == '__main__':
             return all(both())
 
         def isDuplicateWin():
-            key = ['horizantal_win', 'horizantal_win']
+            key = ['horizantal_win', 'vertical_win']
             for win_count in (x_win_count, o_win_count):
                 for i in key:
                     if win_count[i] >= 2:
